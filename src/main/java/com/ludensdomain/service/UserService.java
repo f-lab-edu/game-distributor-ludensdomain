@@ -3,6 +3,7 @@ package com.ludensdomain.service;
 import com.ludensdomain.advice.exceptions.DuplicatedUserException;
 import com.ludensdomain.advice.exceptions.NonExistingUserException;
 import com.ludensdomain.advice.exceptions.PasswordNotMatchingException;
+import com.ludensdomain.dto.GameDto;
 import com.ludensdomain.dto.UserDto;
 import com.ludensdomain.mapper.UserMapper;
 import com.ludensdomain.util.BCryptEncryptor;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -101,5 +103,10 @@ public class UserService {
     public void deleteUser(long id) {
 
         userMapper.deleteUser(id);
+    }
+
+    public List<GameDto> getPurchaseHistory(long id) {
+
+        return userMapper.getPurchaseHistory(id);
     }
 }

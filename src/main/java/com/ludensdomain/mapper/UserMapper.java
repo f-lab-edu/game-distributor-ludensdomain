@@ -1,7 +1,10 @@
 package com.ludensdomain.mapper;
 
+import com.ludensdomain.dto.GameDto;
 import com.ludensdomain.dto.UserDto;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface UserMapper {
@@ -17,5 +20,7 @@ public interface UserMapper {
     boolean checkIdExists(long id);
 
     void deleteUser(long id);
+
+    List<GameDto> getPurchaseHistory(long id);
 
 }

@@ -61,5 +61,27 @@
         WHERE id = #{id}
     </delete>
 
+    <select id="getPurchaseHistory">
+        SELECT G.id,
+               G.title,
+               G.genre,
+               G.description,
+               G.release_date releaseDate,
+               G.price,
+               G.developer,
+               G.publisher,
+               G.rating,
+               G.sales,
+               G.status,
+               U.id,
+               U.name,
+               P.purchase_date purchaseDate,
+               P.purchase_id purchaseId
+        FROM game G, purchase P, user U
+        WHERE P.user_id = #{userId}
+          AND P.game_id = G.id
+          AND P.user_id = U.id
+    </select>
+
 </mapper>
 

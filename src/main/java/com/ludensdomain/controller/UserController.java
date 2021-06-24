@@ -1,6 +1,7 @@
 package com.ludensdomain.controller;
 
 import com.ludensdomain.aop.LoginCheck;
+import com.ludensdomain.dto.GameDto;
 import com.ludensdomain.dto.UserDto;
 import com.ludensdomain.service.LoginService;
 import com.ludensdomain.service.UserService;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+
+import java.util.List;
 
 import static com.ludensdomain.util.ResponseEntityConstants.*;
 
@@ -73,5 +76,11 @@ public class UserController {
     public void deleteUser(@PathVariable long id) {
 
         userService.deleteUser(id);
+    }
+
+    @GetMapping("/{id}/games")
+    public List<GameDto> getPurchaseHistory(@PathVariable long id) {
+
+        return userService.getPurchaseHistory(id);
     }
 }
