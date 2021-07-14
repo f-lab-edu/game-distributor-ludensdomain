@@ -15,6 +15,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.session.data.redis.config.ConfigureRedisAction;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -45,7 +46,7 @@ public class RedisConfig {
      * LettuceConnectionFacotory : Lettuce(Redis client) 기반의 ConnectionFactory 객체
      * Lettuce는 Jedis에 비교해 CPU 활용도와 응답 속도가 월등함으로 LettuceConnectionFactory를 사용함
      */
-    @Bean
+    @Bean("redisSessionConnectionFactory")
     @Primary
     public RedisConnectionFactory redisSessionConnectionFactory() {
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
